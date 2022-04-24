@@ -1,6 +1,5 @@
 <script lang="ts">
    import { processDate } from '$lib/date';
-   import Hint from '$lib/hint/Hint.svelte';
 
    import { mailData, type Mail } from '../../stores';
 
@@ -18,7 +17,7 @@
 </script>
 
 <div class="element" class:unread={is_unread}>
-   <a href={`mails/${mail.id}`}>
+   <a href={`/mails/${mail.id}`}>
       <div class="flexContainer">
          <div class="content">
             <p class="from">{mail.from}</p>
@@ -28,7 +27,7 @@
             <div class="date">
                {processDate(mail.sent_date)}
             </div>
-            <div class="checkbox">
+            <div class="checkbox" on:click={(e) => e.stopPropagation()}>
                <input
                   type="checkbox"
                   name="toggleRead"
@@ -39,10 +38,14 @@
                />
 
                {#if is_unread}
-                  <Hint message="Mark as unread" />
+                  <div class="hint">
+                     <div>Mark as unread</div>
+                  </div>
                   <span class="material-icons"> mark_email_read</span>
                {:else}
-                  <Hint message="Mark as read" />
+                  <div class="hint">
+                     <div>Mark as read</div>
+                  </div>
                   <span class="material-icons"> markunread</span>
                {/if}
             </div>
@@ -105,5 +108,35 @@
       width: 100%;
       font-size: var(--font-size-small);
       color: var(--text-color);
+   }
+
+   .hint {
+      position: absolute;
+      transform: translate(-50%);
+      bottom: 0;
+      left: 50%;
+      opacity: 0;
+      width: 60px;
+      padding: 10px 0;
+      display: grid;
+      place-items: center;
+      background-color: var(--dark-background);
+      font-size: var(--font-size-tiny);
+      color: var(--light-gray);
+   }
+   .checkbox:hover .hint {
+      opacity: 0.7;
+   }
+   .hint::after {
+      content: '';
+      position: absolute;
+      top: -6px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 6px 8px 6px;
+      border-radius: 2px;
+      border-color: transparent transparent var(--dark-background) transparent;
+      pointer-events: none;
    }
 </style>
