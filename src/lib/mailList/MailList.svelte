@@ -22,14 +22,14 @@
 
 <style>
    .flexTable {
-      width: 80%;
+      width: min(1000px, 100%);
       background-color: #fafafa;
-      margin: 0 auto;
       padding: 20px;
       border-radius: 20px;
       box-shadow: 0 2px 5px 2px #eee;
    }
    ul {
       list-style: none;
+      padding: 0;
    }
 </style>
