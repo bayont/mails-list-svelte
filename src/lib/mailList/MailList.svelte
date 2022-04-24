@@ -1,24 +1,33 @@
 <script lang="ts">
+   import { chunk } from '$lib/chunk';
+
    import MailElement from '$lib/mailElement/MailElement.svelte';
 
    import { mailData, type Mail } from '../../stores';
+   import Pagination from '../pagination/Pagination.svelte';
 
    let mails: Mail[];
+   export let page: number = 1;
+   let currentPage: Mail[];
 
    mailData.subscribe((value) => {
       mails = value;
    });
+
+   $: pages = chunk<Mail>(mails, 5);
+   $: currentPage = pages[page - 1];
 </script>
 
 <div class="flexTable">
    <ul>
-      {#each mails as mail, i}
+      {#each currentPage as mail, i}
          <li>
             <MailElement {mail} />
          </li>
       {/each}
    </ul>
 </div>
+<Pagination {page} pagesCount={pages.length} />
 
 <style>
    .flexTable {
