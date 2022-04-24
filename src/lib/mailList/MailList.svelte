@@ -41,4 +41,10 @@
       list-style: none;
       padding: 0;
    }
+   li {
+      border-bottom: 2px solid var(--light-gray);
+   }
+   li:last-child {
+      border-bottom: none;
+   }
 </style>

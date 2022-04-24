@@ -56,7 +56,6 @@
 
 <style>
    .element {
-      border-bottom: 2px solid var(--light-gray);
       padding: 0 20px;
    }
    .element:hover {
