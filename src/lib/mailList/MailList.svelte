@@ -14,7 +14,7 @@
       mails = value;
    });
 
-   $: pages = chunk<Mail>(mails, 5);
+   $: pages = chunk<Mail>(mails, 10);
    $: currentPage = pages[page - 1];
 </script>
 
