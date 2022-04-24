@@ -21,8 +21,9 @@
       margin-top: 20px;
       list-style: none;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       width: 100%;
+      flex-wrap: wrap;
    }
    li {
       background-color: var(--white);
@@ -34,6 +35,7 @@
       user-select: none;
       cursor: pointer;
       color: var(--text-color);
+      margin: 5px;
    }
    .current {
       background-color: var(--accent-color);
