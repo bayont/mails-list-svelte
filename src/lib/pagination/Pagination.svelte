@@ -1,18 +1,46 @@
 <script lang="ts">
+   import type { Mail } from 'src/stores';
+
    export let page: number;
-   export let pagesCount: number;
+   export let pages: Mail[][];
+
+   const max = 5;
+   let left: number;
+   let right: number;
+   let midPages: Mail[][];
+   $: left = page - max / 2 > 0 ? Math.ceil(page - max / 2) : 0;
+   $: right = left + max;
+   $: midPages = pages.slice(left, right);
 </script>
 
 <ul>
-   {#each Array(pagesCount) as _, i}
-      <a href={`/pages/${i + 1}`}>
-         <li class:current={page == i + 1}>
+   {#if left > 0}
+      <li class:current={page == 1}>
+         <a href={`/pages/1`}>
+            <div class="pageWrapper">1</div>
+         </a>
+      </li>
+      <li class="separator">...</li>
+   {/if}
+
+   {#each midPages as p, i}
+      <li class:current={page == i + 1 + left}>
+         <a href={`/pages/${i + 1 + left}`}>
             <div class="pageWrapper">
-               {i + 1}
+               {i + 1 + left}
             </div>
-         </li>
-      </a>
+         </a>
+      </li>
    {/each}
+
+   {#if right < pages.length}
+      <li class="separator">...</li>
+      <li class:current={page == pages.length}>
+         <a href={`/pages/${pages.length}`}>
+            <div class="pageWrapper">{pages.length}</div>
+         </a>
+      </li>
+   {/if}
 </ul>
 
 <style>
@@ -37,12 +65,29 @@
       color: var(--text-color);
       margin: 5px;
    }
+   a {
+      color: inherit;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+   }
+
    .current {
       background-color: var(--accent-color);
+   }
+   .current a,
+   li:hover a {
       color: var(--white);
    }
    li:hover {
       background-color: var(--accent-color);
-      color: var(--white);
+   }
+   .separator {
+      background-color: transparent;
+      cursor: default;
+   }
+   .separator:hover {
+      background-color: transparent;
    }
 </style>

@@ -27,7 +27,7 @@
       {/each}
    </ul>
 </div>
-<Pagination {page} pagesCount={pages.length} />
+<Pagination {page} {pages} />
 
 <style>
    .flexTable {
