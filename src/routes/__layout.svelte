@@ -43,7 +43,6 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 40px;
       font-size: var(--font-size-small);
    }
    footer p {
@@ -56,11 +55,5 @@
    }
    .icon {
       fill: var(--icon-color);
-   }
-
-   @media (min-width: 480px) {
-      footer {
-         padding: 40px 0;
-      }
    }
 </style>

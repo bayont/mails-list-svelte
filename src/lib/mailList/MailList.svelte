@@ -33,13 +33,18 @@
    .flexTable {
       width: min(1000px, 100%);
       background-color: #fafafa;
-      padding: 20px;
       border-radius: 20px;
       box-shadow: 0 2px 5px 2px #eee;
+      height: 400px;
+      display: flex;
+      justify-content: center;
    }
    ul {
       list-style: none;
       padding: 0;
+
+      overflow: auto;
+      width: 90%;
    }
    li {
       border-bottom: 2px solid var(--light-gray);
