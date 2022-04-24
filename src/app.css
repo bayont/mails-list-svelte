@@ -7,18 +7,21 @@
       'Helvetica Neue', sans-serif;
    --font-mono: 'Fira Mono', monospace;
    --font-custom: 'Varela', sans-serif;
+   --font-size-tiny: 8px;
    --font-size-small: 12px;
    --font-size-regular: 14px;
    --font-size-big: 16px;
    --weight-thin: 300;
    --weight-regular: 400;
-   --weight-thick: 800;
+   --weight-thick: 700;
    --pure-white: #ffffff;
    --backround-color: #efefef;
    --accent-color: rgb(11, 158, 255);
    --heading-color: rgba(0, 0, 0, 0.7);
    --text-color: #444444;
    --icon-color: #666666;
+   --light-gray: #eee;
+   --dark-background: #333;
    --background-without-opacity: rgba(255, 255, 255, 0.7);
    --column-width: 42rem;
    --column-margin-top: 4rem;
@@ -66,10 +69,6 @@ p {
 a {
    color: var(--accent-color);
    text-decoration: none;
-}
-
-a:hover {
-   text-decoration: underline;
 }
 
 h1 {
