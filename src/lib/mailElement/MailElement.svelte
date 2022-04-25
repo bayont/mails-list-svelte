@@ -4,7 +4,7 @@
    import { mailData, type Mail } from '../../stores';
 
    export let mail: Mail;
-   let is_unread = mail.is_unread;
+   $: is_unread = mail.is_unread;
 
    const toggleRead = () => {
       is_unread = !is_unread;

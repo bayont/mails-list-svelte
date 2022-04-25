@@ -5,9 +5,6 @@
    export let pages: Mail[][];
 
    const max = 5;
-   let left: number;
-   let right: number;
-   let midPages: Mail[][];
    $: left = page - max / 2 > 0 ? Math.ceil(page - max / 2) : 0;
    $: right = left + max;
    $: midPages = pages.slice(left, right);

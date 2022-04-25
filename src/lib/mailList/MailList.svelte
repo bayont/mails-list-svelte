@@ -6,13 +6,8 @@
    import { mailData, type Mail } from '../../stores';
    import Pagination from '../pagination/Pagination.svelte';
 
-   let mails: Mail[];
+   const mails: Mail[] = $mailData;
    export let page: number = 1;
-   let currentPage: Mail[];
-
-   mailData.subscribe((value) => {
-      mails = value;
-   });
 
    $: pages = chunk<Mail>(mails, 10);
    $: currentPage = pages[page - 1];
